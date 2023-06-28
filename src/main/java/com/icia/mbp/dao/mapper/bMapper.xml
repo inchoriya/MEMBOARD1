@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+	
+	<insert id="bWrite" parameterType="board">
+		INSERT INTO BOARDT VALUES(BOARDT_SEQ.NEXTVAL, #{bWriter}, #{bTitle}, #{bContent}, SYSDATE, 0, #{bFileName})
+	</insert>
+	
+	<select id="bCount" resultType="int">
+		SELECT COUNT(*) FROM BOARDT
+	</select>
+	
+	<select id="bList" resultType="board">
+		SELECT * FROM BOARDT ORDER BY BNUM DESC
+	</select>
+	
+	<update id="bHit" parameterType="int">
+		UPDATE BOARDT SET BHIT = BHIT + 1 WHERE BNUM = #{bNum}
+	</update>
+	
+	<select id="bView" parameterType="int" resultType="board">
+		SELECT * FROM BOARDT WHERE BNUM = #{bNum}
+	</select>
+	
+	
+	
+
+</mapper>

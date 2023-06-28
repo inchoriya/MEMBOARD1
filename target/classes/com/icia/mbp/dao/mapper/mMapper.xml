@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+
+	<!-- ajax 목록 -->
+	<select id="mList2" resultType="member">
+		SELECT * FROM MEMBERTLIST ORDER BY MNAME ASC
+	</select>
+
+	<!-- 회원목록 페이징 -->
+	<select id="mList" parameterType="paging" resultType="member">
+		SELECT * FROM MEMBERTLIST WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+
+	<!-- 회원수 -->
+	<select id="mCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBERT
+	</select>
+
+	<!-- 로그인(MPW값 가져오기) -->
+	<select id="mLogin" parameterType="String" resultType="String">
+		SELECT MPW FROM MEMBERT WHERE MID = #{mId}
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="mJoin" parameterType="member">
+		INSERT INTO MEMBERT VALUES( #{mId}, #{mPw}, #{mName}, #{mBirth}, 
+		#{mGender}, #{mEmail}, #{mPhone}, #{mAddr}, #{mProfileName})
+	</insert>
+	
+	<!-- 아이디 중복 체크 -->
+	<select id="idCheck" parameterType="String" resultType="String">
+		SELECT MID FROM MEMBERT WHERE MID = #{mId}
+	</select>
+	
+	
+	
+</mapper>
+	

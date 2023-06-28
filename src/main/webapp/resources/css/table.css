@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+table, td, th {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td, th {
+	padding: 10px;
+}
+
+div{
+	margin: 20px;	
+}
+
+table {
+	margin: 20px;	
+}
+
+caption {
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+div{
+	margin: 20px;	
+}
+
+#cmtWrite{
+	margin: 20px;
+}
+
+table {
+	margin: 20px;	
+}
+
