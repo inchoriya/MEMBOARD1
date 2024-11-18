@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+
+    <title>회원제 게시판</title>
+</head>
+
+<body>
+<h2>회원제 게시판</h2>
+<span th:if="${session.loginId eq null}">
+        <button id="join">회원가입</button>
+        <button id="login">로그인</button>
+    </span>
+
+<button id="mlist">회원목록</button>
+<button id="blist">게시글목록</button>
+
+<!-- eq : equal , ne : not equal-->
+<span th:if="${session.loginId ne null}">
+    <button id="write">게시글작성</button>
+    <button id="logout">로그아웃</button>
+    <p>로그인 아이디 : [[${session.loginId}]]</p>
+    <img th:src="@{|/profile/${session.loginProfile}|}" width="200px"/>
+</span>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $('#join').click(()=>{
+        location.href = "/mJoinForm";
+    });
+
+    $('#login').click(()=>{
+        location.href = "/mLoginForm";
+    });
+
+    $('#logout').click(()=>{
+        location.href = "/mLogout";
+    });
+
+    $('#mlist').click(()=>{
+        location.href = "/mList";
+    });
+
+    $('#write').click(()=>{
+        location.href = "/bWriteForm";
+    });
+
+    $('#blist').click(()=>{
+        location.href = "/bList";
+    });
+
+
+
+
+</script>
+
+</html>
